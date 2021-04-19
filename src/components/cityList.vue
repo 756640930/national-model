@@ -4,19 +4,19 @@
         <Submenu name="stateNetwork">
             <template slot="title">
                 <van-icon name="location" />
-                Network of States
+                Multimodal network
             </template>
             <Submenu :name="index" v-for="(item, index) in stateName" :key="index">
                 <template slot="title">
                   <van-icon name="location-o" v-if="nowState == item" />
                   {{item}}
                 </template>
-                <MenuItem :name="item+1"><div @click="addNetwork(item,'rail')">rail</div></MenuItem>
-                <MenuItem :name="item+2"><div @click="addNetwork(item,'motorway')">motorway</div></MenuItem>
-                <MenuItem :name="item+3"><div @click="addNetwork(item,'primary')">primary</div></MenuItem>
-                <MenuItem :name="item+4"><div @click="addNetwork(item,'secondary')">secondary</div></MenuItem>
-                <MenuItem :name="item+5"><div @click="addNetwork(item,'trunk')">trunk</div></MenuItem>
-                <MenuItem :name="item+6"><div @click="addNetwork(item,'high_ranking_road')">High_Ranking_Road</div></MenuItem>
+                <MenuItem :name="item+1"><div @click="addNetwork(item,'rail')">Rail</div></MenuItem>
+                <MenuItem :name="item+2"><div @click="addNetwork(item,'motorway')">Motorway</div></MenuItem>
+                <MenuItem :name="item+3"><div @click="addNetwork(item,'primary')">Primary</div></MenuItem>
+                <MenuItem :name="item+4"><div @click="addNetwork(item,'secondary')">Secondary</div></MenuItem>
+                <MenuItem :name="item+5"><div @click="addNetwork(item,'trunk')">Trunk</div></MenuItem>
+                <MenuItem :name="item+6"><div @click="addNetwork(item,'high_ranking_road')">High-ranking road</div></MenuItem>
             </Submenu>
         </Submenu>
         <Submenu name="gmns">
@@ -79,10 +79,8 @@ export default {
       vectorLayer: '',
       agent1Layer: '',
       agent2Layer: '',
-      //当前点击的state
       nowState: 'Alabama',
       single: false,
-      //复选框的状态
       agent1: false,
       agent2: false,
       macronet: false,
@@ -95,7 +93,6 @@ export default {
   mounted() {
     this.addNetwork('Alabama','rail');
   },
-  //监听复选框的状态
   watch: {
     macronet: function(newData,oldData) {
       if(newData == true) {
@@ -155,7 +152,6 @@ export default {
   methods: {
     addNetwork(item,type) {
       this.nowState = item;
-      //解决如果网络多选框没关就点击state的路网导致多选框还存在的问题
       if(item !== "Net1" && item !== "Net2" && item !== "Net3" && item !== "Agent1" && item !== "Agent2") {
         this.micronet = false;
         this.mesonet = false;
@@ -167,9 +163,7 @@ export default {
         url: baseUrl,
       }).then( (response) => {
       // console.log(this.map.map.getLayers())
-      //先移除上一个图层  
       this.map.map.removeLayer(this.vectorLayer);
-      //根据不同的地区设置不同的zoom层级
       let zoomLevel = 8;
       switch(item) {
         case 'Net1':
@@ -193,7 +187,6 @@ export default {
         default: 
           zoomLevel = 8;
       };
-      //网络的颜色
       var net_color = 'rgba(153,48,124)';
       switch(type) {
         case 'rail':

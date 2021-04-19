@@ -3,9 +3,10 @@
     <div id="header">
       <img id="logo" src="@/assets/image/logo.svg">
       <!-- <img id="list" src="@/assets/image/list.svg" @click="value = true"> -->
-      <h2 id="labLabel">ASU Trans+AL Lab</h2>
+      <h2 id="labLabel">ASU Trans+AI Lab</h2>
       <img id="changeLayer" src="@/assets/image/integral.svg" @click="openModal">
       <a href="https://github.com/asu-trans-ai-lab"><img id="git" src="@/assets/image/github.svg"></a>
+      <a href="https://github.com/asu-trans-ai-lab/integrated_modeling_GMNS/tree/main/examples/United_States_network"><img id="data" src="@/assets/image/data.svg"></a>
     </div>
     <aside class="sidebar">
       <div class="sidebar-nav">
@@ -54,7 +55,6 @@ export default {
     }
   },
   methods: {
-    //打开图层选择modal
     openModal() {
       this.$store.commit('isLayerModal')
     }
@@ -84,8 +84,8 @@ export default {
   position: fixed;
   right: 20px;
   bottom: 40px;
-  width: 100px;
-  height: 170px;
+  width: 161px;
+  height: 189px;
 }
 .sidebar {
     padding-top: 0;
@@ -164,6 +164,13 @@ section {
   top: 8px;
   align-self: center;
   width: 2rem;
+}
+#data {
+  position: fixed;
+  right: 120px;
+  top: 13px;
+  align-self: center;
+  width: 1.5rem;
 }
 #changeLayer {
   position: fixed;

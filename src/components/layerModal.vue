@@ -34,13 +34,11 @@ import layers from "@/utils/layers.js"
         },
         methods: {
             ok () {
-                //modal框的state中的布尔值为false
                 this.$store.commit('notLayerModal');
             },
             cancel () {
                 this.$store.commit('notLayerModal')
             },
-            //图层切换操作
             changeLayer() {
               switch(this.mapSource) {
                 case 'bing':

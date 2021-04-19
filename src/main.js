@@ -15,7 +15,7 @@ Vue.config.productionTip = false
 Vue.use(ViewUI);
 Vue.use(Vant);
 Vue.prototype.map = map;
-Vue.prototype.$axios = axios;    //全局注册，使用方法为:this.$axios
+Vue.prototype.$axios = axios;    
 
 
 /* eslint-disable no-new */

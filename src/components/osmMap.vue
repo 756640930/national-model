@@ -16,7 +16,6 @@ export default {
   methods: {
     initMap() {
       this.map.initialMap(this.map.obj);
-      //添加全屏控件
       let fullscreen = new FullScreen();
       this.map.map.addControl(fullscreen);
       function onClick(id, callback) {
@@ -32,7 +31,6 @@ export default {
 
 <style>
 #map{height:100%;}
-/*隐藏ol的一些自带元素*/
 .ol-attribution,.ol-zoom { display: none;}
 
 </style>
